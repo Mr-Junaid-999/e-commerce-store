@@ -1,15 +1,11 @@
-@import "tailwindcss";
+/* globals.css - v3 compatible */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +16,108 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #ffffff;
+  color: #0a0a0a;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Ab @apply use kar sakte hain
+.Accent-text {
+  @apply text-[#FB2E86] font-semibold;
+}
+
+.Accent_btn {
+  @apply bg-[#FB2E86]  text-white px-4 py-2 rounded transition-colors;
+}
+.blue-heading {
+  @apply text-[#151875] text-[35px] font-semibold  font-sans;
+}
+.sub_heading {
+  @apply text-[#A578DC] text-[18px];
+} */
+.main_heading {
+  @apply text-[35px] font-bold text-[#0D0E43] leading-tight;
+}
+
+.sub_heading {
+  @apply text-[18px] text-[#A578DC] font-medium;
+}
+
+.section_title {
+  @apply text-[30px] font-semibold text-[#0D0E43] mb-3;
+}
+
+/* ==== TEXT ==== */
+.text-muted {
+  @apply text-[#8A8FB9] text-[15px];
+}
+
+.text-small {
+  @apply text-[14px] text-[#8A8FB9];
+}
+
+/* ==== NAVBAR ==== */
+.nav_bar {
+  @apply flex justify-between items-center bg-white py-4 px-10 shadow-sm;
+}
+
+.nav_link {
+  @apply text-[#0D0E43] hover:text-[#FB2E86] transition duration-300 text-[16px] font-medium;
+}
+
+.nav_button {
+  @apply bg-[#FB2E86] text-white hover:bg-[#7E33E0] px-6 py-2 rounded-md  transition;
+}
+
+/* ==== HEADING BAR (top info) ==== */
+.heading_bar {
+  @apply bg-[#7E33E0] text-white flex justify-between items-center px-10 py-2 text-[14px];
+}
+
+/* ==== DISCOUNT / HERO SECTION ==== */
+.discount_section {
+  @apply bg-[#F2F0FF] flex flex-col md:flex-row items-center justify-between px-10 py-16 rounded-2xl;
+}
+
+.discount_text {
+  @apply text-[#0D0E43] text-[24px] font-semibold leading-snug;
+}
+
+.discount_btn {
+  @apply bg-[#FB2E86] text-white px-6 py-3 rounded-md hover:bg-[#7E33E0] transition;
+}
+
+/* ==== FEATURE PRODUCT CARD ==== */
+.product_card {
+  @apply bg-white p-5 rounded-xl shadow hover:shadow-lg transition;
+}
+
+.product_img {
+  @apply w-full h-[250px] object-cover rounded-md;
+}
+
+.product_title {
+  @apply text-[#0D0E43] font-semibold text-[18px] mt-3;
+}
+
+.product_price {
+  @apply text-[#FB2E86] font-bold text-[17px];
+}
+
+/* ==== FOOTER ==== */
+.footer {
+  @apply bg-[#EEEFFB] py-10 px-10 text-[#0D0E43];
+}
+
+.footer_link {
+  @apply text-[#8A8FB9] hover:text-[#FB2E86] text-[15px] transition;
+}
+
+/* ==== BUTTONS ==== */
+.btn-primary {
+  @apply bg-[#FB2E86] text-white px-6 py-3 rounded-md hover:bg-[#7E33E0] transition font-medium;
+}
+
+.btn-outline {
+  @apply border border-[#7E33E0] text-[#7E33E0] px-6 py-3 rounded-md hover:bg-[#7E33E0] hover:text-white transition font-medium;
 }
