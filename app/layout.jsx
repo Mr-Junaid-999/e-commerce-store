@@ -1,5 +1,24 @@
 // app/layout.js
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Header from "./components/Header";
+import { Josefin_Sans, Lato } from "next/font/google";
+
+// Fonts configure karein
+const josefin = Josefin_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-josefin",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "700", "900"],
+  variable: "--font-lato",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -8,8 +27,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${josefin.variable} ${lato.variable}`}>
+      <body>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

@@ -1,52 +1,33 @@
-// app/admin/dashboard/page.jsx
-"use client";
-import React from "react";
-import createClient from "@/lib/client";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/server";
 import { Card, CardContent } from "@/app/admin/components/ui/card";
 import { Bell, MessageSquare } from "lucide-react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-import { useEffect } from "react";
-const data = [
-  { name: "Mon", today: 12, yesterday: 20 },
-  { name: "Tue", today: 25, yesterday: 30 },
-  { name: "Wed", today: 20, yesterday: 15 },
-  { name: "Thu", today: 38, yesterday: 22 },
-  { name: "Fri", today: 29, yesterday: 35 },
-];
+import SalesChart from "../components/salesChart";
 
-export default function DashboardPage() {
-  const router = useRouter();
-  async function fetchData() {
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    console.log("User:", user.id);
-    if (!user) {
-      redirect("/login");
-    } else {
-      const { data: admin } = await supabase
-        .from("users")
-        .select("*")
-        .eq("user_id", user.id)
-        .eq("role", "admin")
-        .single();
-      if (!admin) {
-        redirect("/login");
-      }
-    }
+export default async function DashboardPage() {
+  // ✅ Server-side auth check
+  const supabase = await createClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/login");
   }
-  useEffect(() => {
-    fetchData();
-  }, []);
+
+  const { data: admin } = await supabase
+    .from("users")
+    .select("*")
+    .eq("user_id", user.id)
+    .eq("role", "admin")
+    .single();
+
+  if (!admin) {
+    redirect("/login");
+  }
+
+  // ✅ Now render dashboard
   return (
     <div className="space-y-6">
       {/* Top Bar */}
@@ -64,11 +45,6 @@ export default function DashboardPage() {
           />
           <Bell className="text-yellow-400" />
           <MessageSquare className="text-pink-400" />
-          {/* <img
-            src=""
-            alt="image"
-            className="w-9 h-9 rounded-full border border-gray-600"
-          /> */}
         </div>
       </div>
 
@@ -95,30 +71,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Sales Chart */}
-      <Card className="bg-[#111827]">
-        <CardContent className="p-6">
-          <h3 className="text-lg mb-4">Todays Sales</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={data}>
-              <XAxis dataKey="name" stroke="#888" />
-              <YAxis stroke="#888" />
-              <Tooltip />
-              <Line
-                type="monotone"
-                dataKey="today"
-                stroke="#60A5FA"
-                strokeWidth={3}
-              />
-              <Line
-                type="monotone"
-                dataKey="yesterday"
-                stroke="#F472B6"
-                strokeWidth={3}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card>
+      <SalesChart />
 
       {/* Recent Activity */}
       <Card className="bg-[#1A1F2B]">

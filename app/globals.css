@@ -3,7 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import rules must be at the top */
+/* @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700;900&display=swap"); */
+
 :root {
+  --font-josefin: "Josefin Sans", sans-serif;
+  --font-lato: "Lato", sans-serif;
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -15,12 +20,39 @@
   }
 }
 
-body {
-  background: #ffffff;
-  color: #0a0a0a;
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: var(--font-josefin);
+  line-height: 1.6;
+  background: #ffffff;
+  color: #0a0a0a;
+  /* font-family: josefin Sans, sans-serif; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+Link {
+  font-family: var(--font-josefin);
+  font-weight: 700;
+  color: #000000;
+}
+p,
+a,
+li,
+span {
+  font-family: var(--font-lato);
+  font-weight: 700;
+}
 /* Ab @apply use kar sakte hain
 .Accent-text {
   @apply text-[#FB2E86] font-semibold;
@@ -66,7 +98,7 @@ body {
 }
 
 .nav_button {
-  @apply bg-[#FB2E86] text-white hover:bg-[#7E33E0] px-6 py-2 rounded-md  transition;
+  @apply bg-[#FB2E86] text-white hover:bg-[#d2066c] font-semibold text-[17px] px-6 py-2   transition;
 }
 
 /* ==== HEADING BAR (top info) ==== */

@@ -1,8 +1,8 @@
 import { createClient } from "@/lib/server";
 import { redirect } from "next/navigation";
-import Input from "../components/input";
-import PasswordInput from "../components/PasswordInput";
-import Alert from "../components/alert";
+import Input from "../components/ui/input";
+import PasswordInput from "../components/ui/PasswordInput";
+import Alert from "../components/ui/alert";
 import handleLogin from "./action";
 import Link from "next/link";
 export default async function login({ searchParams }) {
