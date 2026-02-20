@@ -4,7 +4,7 @@ import Image from "next/image";
 import ShopexOffer_Card from "../components/ui/ShopexOffer_Card";
 import TestimonialSlider from "../components/TestimonialSlider";
 import Footer from "../components/Footer";
-function about() {
+async function about() {
   const Offers = [
     { image: "/free-delivery-1.png", title: "24/7 Support" },
     { image: "/cashback-1.png", title: "24/7 Support" },

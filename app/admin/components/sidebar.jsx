@@ -6,6 +6,7 @@ import {
   ShoppingBag,
   Truck,
   CreditCard,
+  Images,
   Settings,
 } from "lucide-react";
 import Link from "next/link";
@@ -16,7 +17,7 @@ const menuItems = [
   { name: "Products", icon: Package, path: "/admin/products" },
   { name: "Shipping", icon: Truck, path: "/admin/shipping" },
   { name: "Payments", icon: CreditCard, path: "/admin/payments" },
-  { name: "Settings", icon: Settings, path: "/admin/settings" },
+  { name: "Media", icon: Images, path: "/admin/media" },
 ];
 
 export function Sidebar() {
@@ -48,11 +49,17 @@ export function Sidebar() {
       </div>
 
       <div className="p-6 text-sm text-gray-400">
-        <p>Customer Support</p>
-        <button className="mt-2 w-full bg-yellow-400 text-[#1E293B] py-2 rounded-lg font-semibold">
-          Connect Now
-        </button>
-        <p className="mt-4 text-xs">Terms & Services · Privacy Policy</p>
+        <p className="text-white font-medium mb-2">Customer Support</p>
+
+        <p className="leading-relaxed">
+          Our support team is available to assist with order issues, payment
+          queries, and shipping updates. Please ensure all order details are
+          verified before escalating a support request.
+        </p>
+
+        <p className="mt-4 text-xs text-gray-500">
+          Terms & Services · Privacy Policy
+        </p>
       </div>
     </aside>
   );

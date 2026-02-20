@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Image from "next/image";
 import Footer from "./components/Footer";
 import BrandsLogo from "./components/BrandsLogo";
+import Link from "next/link";
 const ErrorPage = async () => {
   return (
     <>
@@ -35,7 +36,9 @@ const ErrorPage = async () => {
               className="object-contain "
             />
           </div>
-          <button className="nav_button">Back To Home</button>
+          <Link href="/" className="nav_button">
+            Back To Home
+          </Link>
         </div>
         <BrandsLogo />
       </div>

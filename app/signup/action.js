@@ -89,7 +89,7 @@ export default async function handleSignup(formData) {
       // Redirect with Supabase error
       redirect(`/signup?error=${encodeURIComponent(error.message)}`);
     }
-    console.log("Auth Data:", authData.user);
+
     console.log(
       "User ID:",
       authData.user.id,

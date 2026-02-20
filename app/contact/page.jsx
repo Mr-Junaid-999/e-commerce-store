@@ -4,7 +4,7 @@ import Input from "../components/ui/input";
 import Image from "next/image";
 import Footer from "../components/Footer";
 
-function Contact() {
+async function Contact() {
   return (
     <>
       <Header />
@@ -24,7 +24,7 @@ function Contact() {
         </div>
       </div>
       <div className="max-w-[1280px] mx-auto">
-        <div className="flex  items-center  py-[120px] px-[23px]">
+        <div className="flex  items-center  py-[120px] px-[50px]">
           <div className="w-[534px] flex flex-col justify-start items-start">
             <div className="mb-[176px]">
               <h1 className="font-bold text-[36px] text-[#151874]">
@@ -66,7 +66,7 @@ function Contact() {
               </button>
             </div>
           </div>
-          <div className="w-[723px] flex flex-col justify-start items-center">
+          <div className="w-[650px] flex flex-col justify-start items-center">
             <div className="mb-[176px] mt-0 pt-0 pb-12">
               <h1 className="font-bold text-[36px] text-[#151874] pb-[24px]">
                 Contact Way

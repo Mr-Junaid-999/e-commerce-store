@@ -1,17 +1,15 @@
-"use client";
 import React from "react";
-import { useState } from "react";
 import Image from "next/image";
 import { Check } from "lucide-react";
-function Discount_Item() {
-  const [active, setActive] = useState("Wood Chair");
+import { addincartoffproduct } from "../actions/addToCart";
+async function Discount_Item() {
   return (
     <div className="max-w-[1280] mx-auto">
       <div className="flex flex-col w-[1214px] justify-center items-center ">
-        <h1 className="text-3xl text-[#151874] font-bold  my-4 text-center">
+        <h1 className="text-3xl text-[#151874] font-bold  my-3 text-center">
           Discount Item
         </h1>
-        <div className="flex  justify-center items-center gap-[21px]">
+        {/* <div className="flex  justify-center items-center gap-[21px]">
           <div className="flex  justify-center items-center gap-[5px] hover:text-[#FB2E86]">
             <button
               onClick={() => {
@@ -73,7 +71,7 @@ function Discount_Item() {
               }`}
             ></div>
           </div>
-        </div>
+        </div> */}
         <div className="w-[1214px] h-[575px] flex  justify-center items-center gap-[21px]">
           <div className="flex flex-col justify-center items-start w-[510px]">
             <h1 className="text-[#151874] font-bold text-[35px] pb-[16px]">
@@ -128,7 +126,11 @@ function Discount_Item() {
                 </div>
               </div>
             </div>
-            <button className="nav_button">Shop Now</button>
+            <form action={addincartoffproduct.bind(null, 36)}>
+              <button type="submit" className="nav_button">
+                Shop Now
+              </button>
+            </form>
           </div>
           <Image src={"/Off_Chair.png"} alt="image" width={558} height={550} />
         </div>

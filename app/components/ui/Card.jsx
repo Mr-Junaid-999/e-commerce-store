@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { ShoppingCart, Heart, Search } from "lucide-react";
 
-export default function ProductCard({ image, name, code, price }) {
+export default function ProductCard({ product_id, image, name, code, price }) {
   return (
     <div className="group w-[270px] h-[361px] m-2 text-[#1E293B] bg-white shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 text-center overflow-hidden hover:bg-[#2F1AC4] hover:text-white  ">
       {/* Product Image Section */}
@@ -29,9 +30,12 @@ export default function ProductCard({ image, name, code, price }) {
         </div>
 
         {/* View Details Button */}
-        <button className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#00C853] text-white text-sm px-4 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <Link
+          href={`/products/${product_id}`}
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#00C853] text-white text-sm px-4 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
           View Details
-        </button>
+        </Link>
       </div>
 
       {/* Product Details Section */}

@@ -4,9 +4,9 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-[#F6F5FB] pt-16 ">
-      <div className="max-w-[1280px] mx-auto px-4">
+      <div className="max-w-[1280px] mx-auto px-4   ">
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 lg:pl-8">
           {/* Column 1 */}
           <div>
             <h1 className="text-3xl text-[#151875] font-bold mb-4">Hekto</h1>

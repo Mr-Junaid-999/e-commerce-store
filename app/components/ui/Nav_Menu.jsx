@@ -1,4 +1,3 @@
-//
 "use client";
 import React from "react";
 import Link from "next/link";
@@ -28,7 +27,7 @@ function NavMenu({ searchParams }) {
 
         <Link
           onMouseEnter={ShowBox}
-          href="#"
+          href="/products"
           className={`${
             Active === "products" ? "text-pink-500" : "hover:text-pink-500"
           }`}
@@ -37,16 +36,16 @@ function NavMenu({ searchParams }) {
         </Link>
 
         <Link
-          href="#"
+          href="blogs"
           className={`${
             Active === "blog" ? "text-pink-500" : "hover:text-pink-500"
           }`}
         >
-          Blog
+          Blogs
         </Link>
 
         <Link
-          href={`/FAQs`}
+          href={`/faqs`}
           className={`${
             Active === "pages" ? "text-pink-500" : "hover:text-pink-500"
           }`}

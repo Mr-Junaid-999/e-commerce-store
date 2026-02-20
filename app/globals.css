@@ -153,3 +153,19 @@ span {
 .btn-outline {
   @apply border border-[#7E33E0] text-[#7E33E0] px-6 py-3 rounded-md hover:bg-[#7E33E0] hover:text-white transition font-medium;
 }
+
+/* Swiper pagination/bullet styles used by TestimonialSlider */
+.testimonial-bullet {
+  background: #ffdbe9; /* light pink background for bullets */
+  transition: opacity 200ms, transform 200ms;
+}
+.testimonial-bullet-active {
+  background: #ff2e86; /* bright pink active bullet */
+  opacity: 1;
+  transform: scale(1.15);
+}
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}

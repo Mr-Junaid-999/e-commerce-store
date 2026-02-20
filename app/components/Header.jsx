@@ -4,14 +4,25 @@ import Link from "next/link";
 import { createClient } from "@/lib/server";
 import LogoutButton from "./ui/LogoutButton";
 import NavMenu from "./ui/Nav_Menu";
+import { redirect } from "next/navigation";
 export default async function Header({ searchParams }) {
   const Active = (await searchParams?.active) || "home";
-  // (Optional) You can fetch server data here
-  // Example: const user = await getCurrentUser();
+  let isAdmin = false;
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  if (user) {
+    const { data: currentUser } = await supabase
+      .from("users")
+      .select("user_id, role")
+      .eq("user_id", user.id)
+      .single();
+    isAdmin = currentUser?.role === "admin" ? true : false;
+  } else {
+    isAdmin = false;
+  }
 
   return (
     <header className="w-full border-b border-gray-200 fixed z-10">
@@ -23,6 +34,14 @@ export default async function Header({ searchParams }) {
             <span>📞 +92 3000115907</span>
           </div>
           <div className="flex items-center ">
+            {isAdmin && (
+              <Link
+                href="/admin/dashboard"
+                className="Link bg-[#8A2BE2] text-white hover:bg-[#5b3987] px-6 py-2 rounded-md  transition"
+              >
+                Admin Dashboard
+              </Link>
+            )}
             {user ? (
               <LogoutButton />
             ) : (
@@ -32,13 +51,13 @@ export default async function Header({ searchParams }) {
             )}
 
             <Link
-              href="#"
+              href="/wishlist"
               className="Link bg-[#8A2BE2] text-white hover:bg-[#5b3987] px-6 py-2 rounded-md  transition"
             >
               Wishlist
             </Link>
             <Link
-              href="#"
+              href="/add-to-cart"
               className="bg-[#8A2BE2] text-white hover:bg-[#5b3987] px-6 py-2 rounded-md  transition"
             >
               <ShoppingCart className="w-5 h-5 cursor-pointer" />
@@ -53,57 +72,6 @@ export default async function Header({ searchParams }) {
           {/* Logo */}
           <h1 className="text-2xl font-bold text-[#1E293B]">Hekto</h1>
 
-          {/* Menu
-          <nav className="flex flex-wrap items-center gap-6 text-gray-700 font-medium">
-            <Link
-              href={`/`}
-              className={`${
-                Active === "home" ? "text-pink-500" : "hover:text-pink-500"
-              } `}
-            >
-              Home
-            </Link>
-            <Link
-              href={`/page`}
-              className={`${
-                Active === "pages" ? "text-pink-500" : "hover:text-pink-500"
-              }`}
-            >
-              Pages
-            </Link>
-            <Link
-              href="#"
-              className={`${
-                Active === "products" ? "text-pink-500" : "hover:text-pink-500"
-              }`}
-            >
-              Products
-            </Link>
-            <Link
-              href="#"
-              className={`${
-                Active === "blog" ? "text-pink-500" : "hover:text-pink-500"
-              }`}
-            >
-              Blog
-            </Link>
-            <Link
-              href="#"
-              className={`${
-                Active === "shop" ? "text-pink-500" : "hover:text-pink-500"
-              }`}
-            >
-              Shop
-            </Link>
-            <Link
-              href="#"
-              className={`${
-                Active === "contact" ? "text-pink-500" : "hover:text-pink-500"
-              }`}
-            >
-              Contact
-            </Link>
-          </nav> */}
           <NavMenu />
 
           {/* Search Bar */}
