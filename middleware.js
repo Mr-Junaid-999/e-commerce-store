@@ -34,7 +34,7 @@ export async function middleware(request) {
             });
           },
         },
-      }
+      },
     );
 
     // Get current user
@@ -46,17 +46,21 @@ export async function middleware(request) {
     const { pathname } = request.nextUrl;
 
     console.log(
-      `Middleware: ${pathname} - User: ${user?.id || "Not logged in"}`
+      `Middleware: ${pathname} - User: ${user?.id || "Not logged in"}`,
     );
 
     // 1. ALWAYS ALLOW THESE ROUTES (Even without authentication)
     const alwaysAllowedRoutes = [
       "/",
+      "/products",
+      "/contact",
+      "/about",
+      "/blogs",
+      "/faqs",
       "/login",
       "/signup",
       "/forgot-password",
       "/reset-password",
-      "/products",
       "/api/auth/callback",
       "/_next",
       "/favicon.ico",
@@ -74,7 +78,7 @@ export async function middleware(request) {
         pathname.startsWith("/api/auth") ||
         pathname.startsWith("/_next/static") ||
         pathname.startsWith("/_next/image") ||
-        pathname.includes(".")
+        pathname.includes("."),
     );
 
     // If route is always allowed, allow access immediately
@@ -102,7 +106,7 @@ export async function middleware(request) {
     ];
 
     const isAdminRoute = adminRoutes.some(
-      (route) => pathname === route || pathname.startsWith(`${route}/`)
+      (route) => pathname === route || pathname.startsWith(`${route}/`),
     );
 
     if (isAdminRoute) {

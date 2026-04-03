@@ -18,12 +18,12 @@ import TrandingCard from "./components/ui/Tranding_Card";
 import { addincartoffproduct } from "./actions/addToCart";
 export default async function Home() {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) {
-    redirect("/login");
-  }
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
+  // if (!user) {
+  //   redirect("/login");
+  // }
   const Offers = [
     { image: "/free-delivery-1.png", title: "24/7 Support" },
     { image: "/cashback-1.png", title: "24/7 Support" },
