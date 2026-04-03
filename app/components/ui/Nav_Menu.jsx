@@ -3,8 +3,10 @@ import React from "react";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
-function NavMenu({ searchParams }) {
-  const Active = searchParams?.active || "home";
+import { useParams } from "next/navigation";
+function NavMenu() {
+  const params = useParams();
+  const Active = params?.slug;
   const [box, setBox] = useState(false);
   const ShowBox = () => {
     setBox(true);
